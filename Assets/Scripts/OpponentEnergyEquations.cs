@@ -1,11 +1,14 @@
 using UnityEngine;
 using System;
-
+/// <summary>
+/// Handles opponent energy logic
+/// </summary>
 public class OpponentEnergyEquations : MonoBehaviour
 {
 
     public static Action OnEnergyGained;
     public static Action OnEnergyUsed;
+    public static Action OnEnergyLost;
     public static Action OnCurrentEnergyUpdate;
 
     [SerializeField] WarningPanelHandler warningPanelHandler = null;
@@ -17,6 +20,9 @@ public class OpponentEnergyEquations : MonoBehaviour
 
         GameData.EnergyUsed = 0;
         OnEnergyUsed?.Invoke();
+
+        GameData.EnergyLost = 0;
+        OnEnergyLost?.Invoke();
 
         GameData.EnergyGained = 0;
         OnEnergyGained?.Invoke();
@@ -30,14 +36,23 @@ public class OpponentEnergyEquations : MonoBehaviour
 
     public void EnergyUsed()
     {
+        var energySum = (GameData.CurrentEnergy - GameData.EnergyLost) + GameData.EnergyGained;
         GameData.EnergyUsed++;
-        if (GameData.EnergyUsed >= GameData.CurrentEnergy) { GameData.EnergyUsed = GameData.CurrentEnergy; }
+        if (GameData.EnergyUsed >= energySum) { GameData.EnergyUsed = energySum; }
         OnEnergyUsed?.Invoke();
+    }
+
+    public void EnergyLost()
+    {
+        var energySum = (GameData.CurrentEnergy - GameData.EnergyUsed) + GameData.EnergyGained;
+        GameData.EnergyLost++;
+        if (GameData.EnergyLost >= energySum) { GameData.EnergyLost = energySum; }
+        OnEnergyLost?.Invoke();
     }
 
     public void MultiplyEnergy()
     {
-        GameData.CurrentEnergy = (GameData.CurrentEnergy - GameData.EnergyUsed) + GameData.EnergyGained + 2;
+        GameData.CurrentEnergy = (GameData.CurrentEnergy - GameData.EnergyUsed) + (GameData.EnergyGained - GameData.EnergyLost) + 2;
 
         if (GameData.CurrentEnergy >= 10) { GameData.CurrentEnergy = 10; }
 
@@ -47,6 +62,23 @@ public class OpponentEnergyEquations : MonoBehaviour
 
         GameData.EnergyUsed = 0;
         OnEnergyUsed?.Invoke();
+
+        GameData.EnergyLost = 0;
+        OnEnergyLost?.Invoke();
+    }
+
+    public void AddCurrentEnergy()
+    {
+        GameData.CurrentEnergy++;
+        if (GameData.CurrentEnergy >= 10) { GameData.CurrentEnergy = 10; }
+        OnCurrentEnergyUpdate?.Invoke();
+    }
+
+    public void RemoveCurrentEnergy()
+    {
+        GameData.CurrentEnergy--;
+        if (GameData.CurrentEnergy <= 0) { GameData.CurrentEnergy = 0; }
+        OnCurrentEnergyUpdate?.Invoke();
     }
 
     public void ResetEnergy()
@@ -61,6 +93,9 @@ public class OpponentEnergyEquations : MonoBehaviour
 
             GameData.EnergyGained = 0;
             OnEnergyGained?.Invoke();
+
+            GameData.EnergyLost = 0;
+            OnEnergyLost?.Invoke();
         }
     }
 

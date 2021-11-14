@@ -16,6 +16,7 @@ public class UIDisplay : MonoBehaviour
         RoundBehavior.OnRoundComplete += DisplayRounds;
 
         OpponentEnergyEquations.OnEnergyUsed += DisplayEnergyUsed;
+        OpponentEnergyEquations.OnEnergyLost += DisplayEnergyLost;
         OpponentEnergyEquations.OnEnergyGained += DisplayEnergyGained;
         OpponentEnergyEquations.OnCurrentEnergyUpdate += DisplayCurrentEnergy;
     }
@@ -32,6 +33,7 @@ public class UIDisplay : MonoBehaviour
         RoundBehavior.OnRoundComplete -= DisplayRounds;
 
         OpponentEnergyEquations.OnEnergyUsed -= DisplayEnergyUsed;
+        OpponentEnergyEquations.OnEnergyLost -= DisplayEnergyLost;
         OpponentEnergyEquations.OnEnergyGained -= DisplayEnergyGained;
         OpponentEnergyEquations.OnCurrentEnergyUpdate -= DisplayCurrentEnergy;
     }
@@ -51,6 +53,7 @@ public class UIDisplay : MonoBehaviour
     [SerializeField] TMP_Text roundTxt = null;
 
     [SerializeField] TMP_Text energyUsedTxt = null;
+    [SerializeField] TMP_Text energyLostTxt = null;
     [SerializeField] TMP_Text energyGainedTxt = null;
     [SerializeField] TMP_Text currentEnergyTxt = null;
     #endregion
@@ -82,17 +85,21 @@ public class UIDisplay : MonoBehaviour
     }
     private void DisplayCurrentEnergy()
     {
-        ConvertIntToText(currentEnergyTxt, GameData.currentEnergy);
+        ConvertIntToText(currentEnergyTxt, GameData.CurrentEnergy);
     }
 
     private void DisplayEnergyGained()
     {
-        ConvertIntToText(energyGainedTxt, GameData.energyGained);
+        ConvertIntToText(energyGainedTxt, GameData.EnergyGained);
     }
 
     private void DisplayEnergyUsed()
     {
-        ConvertIntToText(energyUsedTxt, GameData.energyUsed);
+        ConvertIntToText(energyUsedTxt, GameData.EnergyUsed);
+    }
+    private void DisplayEnergyLost()
+    {
+        ConvertIntToText(energyLostTxt, GameData.EnergyLost);
     }
 
     void ConvertIntToText(TMP_Text text, int amount) { text.text = $"{amount}"; }

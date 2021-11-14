@@ -1,3 +1,6 @@
+/// <summary>
+/// Holds all the available data for the app
+/// </summary>
 public static class GameData
 {
     public static int wins;
@@ -12,6 +15,7 @@ public static class GameData
     public static float drawPercent;
 
     public static int energyUsed;
+    public static int energyLost;
     public static int energyGained;
     public static int currentEnergy;
 
@@ -47,6 +51,7 @@ public static class GameData
     public static int MatchesPlayed { get { return matchesPlayed; } set { matchesPlayed = value; } }
 
     public static int EnergyUsed { get { return energyUsed; } set { energyUsed = value; } }
+    public static int EnergyLost { get { return energyLost; } set { energyLost = value; } }
 
     public static int EnergyGained { get { return energyGained; } set { energyGained = value; } }
 

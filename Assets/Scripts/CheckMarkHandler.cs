@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles checkmark logic
+/// </summary>
 public class CheckMarkHandler : MonoBehaviour
 {
     [SerializeField] GameObject check1 = null;

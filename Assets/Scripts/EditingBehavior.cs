@@ -1,5 +1,7 @@
 using UnityEngine;
-
+/// <summary>
+/// Controls the editing of the app
+/// </summary>
 public class EditingBehavior : MonoBehaviour
 {
     [SerializeField] CritTrackerBehavior critTracker;
