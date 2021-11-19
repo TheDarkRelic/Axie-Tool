@@ -11,6 +11,7 @@ public class OpponentEnergyEquations : MonoBehaviour
     public static Action OnEnergyLost;
     public static Action OnCurrentEnergyUpdate;
 
+    [Header("WarningPanelHandler Script Object")]
     [SerializeField] WarningPanelHandler warningPanelHandler = null;
  
     void Start()

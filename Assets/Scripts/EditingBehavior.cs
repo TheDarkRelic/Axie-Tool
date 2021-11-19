@@ -4,8 +4,12 @@ using UnityEngine;
 /// </summary>
 public class EditingBehavior : MonoBehaviour
 {
+
+    [Header("CritTracker Script Object")]
     [SerializeField] CritTrackerBehavior critTracker;
+    [Header("MatchesPlayedBehavior Script Object")]
     [SerializeField] MatchesPlayedBehavior Matches;
+    [Header("Edit Panel Object")]
     [SerializeField] GameObject editPanel;
 
 

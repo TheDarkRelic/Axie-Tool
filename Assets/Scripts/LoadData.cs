@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadData : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class LoadData : MonoBehaviour
         GetWinLoseDrawSavedData();
         GetMatchesPlayedSavedData();
         GetWinLoseDrawPercentageSavedData();
+        GetCritPercentageSavedData();
     }
     private void SaveData()
     {
@@ -28,6 +30,7 @@ public class LoadData : MonoBehaviour
 
     private void GetWinLoseDrawSavedData()
     {
+        
         var wins = PlayerPrefs.GetInt("Wins");
         var loses = PlayerPrefs.GetInt("Loses");
         var draws = PlayerPrefs.GetInt("Draws");
@@ -46,6 +49,13 @@ public class LoadData : MonoBehaviour
         var losePer = PlayerPrefs.GetFloat("LosePercent");
         var drawPer = PlayerPrefs.GetFloat("DrawPercent");
         GameData.InitializeWinLoseDrawPercentageData(winPer, losePer, drawPer);
+    }
+
+    private void GetCritPercentageSavedData()
+    {
+        var ourCrits = PlayerPrefs.GetFloat("OurCrits");
+        var theirCrits = PlayerPrefs.GetFloat("TheirCrits");
+        GameData.InitializeCritPercentageData(ourCrits, theirCrits);
     }
 
     private void SaveWins() => PlayerPrefs.SetInt("Wins", GameData.Wins);
@@ -67,6 +77,10 @@ public class LoadData : MonoBehaviour
         GameData.WinPercent = 0;
         GameData.LosePercent = 0;
         GameData.DrawPercent = 0;
+        GameData.TheirCrits = 0;
+        GameData.OurCrits = 0;
+        PlayerPrefs.SetInt("IsDisabled", 0);
+        SceneManager.LoadScene(0);
     }
 
 }

@@ -9,9 +9,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource audioSourceLowClick;
     [SerializeField] AudioSource audioSourceEndMatchTone;
     [SerializeField] AudioSource audioSourceMaterReset;
+
+    [Header("Audio Mixer")]
     [SerializeField] AudioMixer audioMixer;
 
+    [Header ("Toggle Mute Button")]
     [SerializeField] Toggle muted;
+
     private float volume;
 
     private void Start()

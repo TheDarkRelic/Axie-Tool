@@ -5,6 +5,8 @@ using UnityEngine;
 /// </summary>
 public class CheckMarkHandler : MonoBehaviour
 {
+
+    [Header("Checkmark Sprites")]
     [SerializeField] GameObject check1 = null;
     [SerializeField] GameObject check2 = null;
     [SerializeField] GameObject check3 = null;

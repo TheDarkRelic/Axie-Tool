@@ -19,6 +19,9 @@ public static class GameData
     public static int energyGained;
     public static int currentEnergy;
 
+    public static float ourCrits;
+    public static float theirCrits;
+
 
 
     public static void InitializeWinLoseDrawSaveData(int savedWins, int savedLoses, int savedDraws)
@@ -38,6 +41,12 @@ public static class GameData
         WinPercent = winData;
         LosePercent = loseData;
         DrawPercent = drawData;
+    }
+
+    public static void InitializeCritPercentageData(float ourCrits, float theirCrits)
+    {
+        TheirCrits = theirCrits;
+        OurCrits = ourCrits;
     }
 
     public static int Wins { get { return wins; } set { wins = value; } }
@@ -60,6 +69,9 @@ public static class GameData
     public static float WinPercent { get { return winPercent; } set { winPercent = value; } }
     public static float LosePercent { get { return losePercent; } set { losePercent = value; } }
     public static float DrawPercent { get { return drawPercent; } set { drawPercent = value; } }
+
+    public static float TheirCrits { get { return theirCrits; } set { theirCrits = value; } }
+    public static float OurCrits { get { return ourCrits; } set { ourCrits = value; } }
 
 
 

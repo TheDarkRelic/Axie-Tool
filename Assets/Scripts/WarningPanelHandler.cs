@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class WarningPanelHandler : MonoBehaviour
 {
+
+    [Header("Warning Panel Object")]
     [SerializeField] GameObject warningPanel;
     public bool isDisabled;
 

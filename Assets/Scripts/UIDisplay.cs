@@ -41,17 +41,22 @@ public class UIDisplay : MonoBehaviour
     #endregion
 
     #region Text Fields
+    [Header("Wins, Loses & Draw Text")]
     [SerializeField] TMP_Text winsTxt = null;
     [SerializeField] TMP_Text losesTxt = null;
     [SerializeField] TMP_Text drawsTxt = null;
 
+    [Header("Wins, Loses & Draw Percentages Text")]
     [SerializeField] TMP_Text winPerTxt;
     [SerializeField] TMP_Text lossPerTxt;
     [SerializeField] TMP_Text drawPerTxt;
 
+    [Header("Matches Played Text")]
     [SerializeField] TMP_Text matchesPlayedTxt = null;
+    [Header("Rounds Text")]
     [SerializeField] TMP_Text roundTxt = null;
 
+    [Header("Opponent Energy Text")]
     [SerializeField] TMP_Text energyUsedTxt = null;
     [SerializeField] TMP_Text energyLostTxt = null;
     [SerializeField] TMP_Text energyGainedTxt = null;

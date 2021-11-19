@@ -9,7 +9,6 @@ public class CritTrackerBehavior : MonoBehaviour
         SaveCrits();
     }
 
-    public float ourCrits, theirCrits;
     [SerializeField] TMP_Text ourCritsTxt;
     [SerializeField] TMP_Text theirCritsTxt;
     [SerializeField] TMP_Text ourCritPercentTxt;
@@ -18,80 +17,80 @@ public class CritTrackerBehavior : MonoBehaviour
     private void Start()
     {
         RetrieveCritData();
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
     }
 
     private void RetrieveCritData()
     {
-        ourCrits = PlayerPrefs.GetFloat("OurCrits");
-        ConvertDoubleToText(ourCritsTxt, ourCrits);
+        GameData.OurCrits = PlayerPrefs.GetFloat("OurCrits");
+        ConvertDoubleToText(ourCritsTxt, GameData.OurCrits);
 
-        
-        theirCrits = PlayerPrefs.GetFloat("TheirCrits");
-        ConvertDoubleToText(theirCritsTxt, theirCrits);
+
+        GameData.TheirCrits = PlayerPrefs.GetFloat("TheirCrits");
+        ConvertDoubleToText(theirCritsTxt, GameData.TheirCrits);
     }
 
     #region Our Crit Methods
     public void AddOurCrit()
     {
-        ourCrits++;
-        ConvertDoubleToText(ourCritsTxt, ourCrits);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
+        GameData.OurCrits++;
+        ConvertDoubleToText(ourCritsTxt, GameData.OurCrits);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
     }
 
 
     public void MinusOurCrit()
     {
-        ourCrits--;
-        if(ourCrits <= PlayerPrefs.GetFloat("OurCrits")) { ourCrits = PlayerPrefs.GetFloat("OurCrits"); }
-        ConvertDoubleToText(ourCritsTxt, ourCrits);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
+        GameData.OurCrits--;
+        if(GameData.OurCrits <= PlayerPrefs.GetFloat("OurCrits")) { GameData.OurCrits = PlayerPrefs.GetFloat("OurCrits"); }
+        ConvertDoubleToText(ourCritsTxt, GameData.OurCrits);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
     }
 
     public void RemoveOurCritEdit()
     {
-        ourCrits--;
-        if (ourCrits <= 0) { ourCrits = 0; }
-        ConvertDoubleToText(ourCritsTxt, ourCrits);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
+        GameData.OurCrits--;
+        if (GameData.OurCrits <= 0) { GameData.OurCrits = 0; }
+        ConvertDoubleToText(ourCritsTxt, GameData.OurCrits);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
     }
     #endregion
 
     #region Their Crit Methods
     public void AddTheirCrit()
     {
-        theirCrits++;
-        ConvertDoubleToText(theirCritsTxt, theirCrits);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
+        GameData.TheirCrits++;
+        ConvertDoubleToText(theirCritsTxt, GameData.TheirCrits);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
     }
 
     public void MinusTheirCrit()
     {
-        theirCrits--;
-        if (theirCrits <= PlayerPrefs.GetFloat("TheirCrits")) { theirCrits = PlayerPrefs.GetFloat("TheirCrits"); }
-        ConvertDoubleToText(theirCritsTxt, theirCrits);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
+        GameData.TheirCrits--;
+        if (GameData.TheirCrits <= PlayerPrefs.GetFloat("TheirCrits")) { GameData.TheirCrits = PlayerPrefs.GetFloat("TheirCrits"); }
+        ConvertDoubleToText(theirCritsTxt, GameData.TheirCrits);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
     }
 
     public void RemoveTheirCritEdit()
     {
-        theirCrits--;
-        if (theirCrits <= 0) { theirCrits = 0; }
-        ConvertDoubleToText(theirCritsTxt, theirCrits);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
+        GameData.TheirCrits--;
+        if (GameData.TheirCrits <= 0) { GameData.TheirCrits = 0; }
+        ConvertDoubleToText(theirCritsTxt, GameData.TheirCrits);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
     }
     #endregion
 
     void GetCritPercentAndCovertToTxt(float crit, TMP_Text critPercentTxt)
     {
-        var totalCrits = ourCrits + theirCrits;
+        var totalCrits = GameData.OurCrits + GameData.TheirCrits;
         var critPercent = (crit / totalCrits) * 100;
         DisplayCritPercentage(critPercentTxt, critPercent);
     }
@@ -103,11 +102,11 @@ public class CritTrackerBehavior : MonoBehaviour
 
     public void SaveCrits()
     {
-        PlayerPrefs.SetFloat("OurCrits", ourCrits);
-        GetCritPercentAndCovertToTxt(ourCrits, ourCritPercentTxt);
+        PlayerPrefs.SetFloat("OurCrits", GameData.OurCrits);
+        GetCritPercentAndCovertToTxt(GameData.OurCrits, ourCritPercentTxt);
 
-        PlayerPrefs.SetFloat("TheirCrits", theirCrits);
-        GetCritPercentAndCovertToTxt(theirCrits, theirCritPercentTxt);
+        PlayerPrefs.SetFloat("TheirCrits", GameData.TheirCrits);
+        GetCritPercentAndCovertToTxt(GameData.TheirCrits, theirCritPercentTxt);
     }
 
     void ConvertDoubleToText(TMP_Text text, double amount) { text.text = $"{amount}"; }
