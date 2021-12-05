@@ -3,7 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class LoadData : MonoBehaviour
 {
-
     private void OnDisable()
     {
         SaveData();
@@ -68,7 +67,7 @@ public class LoadData : MonoBehaviour
 
     private void SaveMatchedPlayed() => PlayerPrefs.SetInt("MatchesPlayed", GameData.MatchesPlayed);
 
-    public void ClearAllPrefs()
+    public void ClearAllPrefs(int sceneToLoad)
     {
         GameData.MatchesPlayed = 0;
         GameData.Wins = 0;
@@ -80,7 +79,7 @@ public class LoadData : MonoBehaviour
         GameData.TheirCrits = 0;
         GameData.OurCrits = 0;
         PlayerPrefs.SetInt("IsDisabled", 0);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(sceneToLoad);
     }
 
 }

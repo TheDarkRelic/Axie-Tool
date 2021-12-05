@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour
     [Header ("Toggle Mute Button")]
     [SerializeField] Toggle muted;
 
-    private float volume;
+    private float _volume;
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour
 
     public void MuteMasterVolume()
     {
-        audioMixer.GetFloat("MasterVolume", out volume);
+        audioMixer.GetFloat("MasterVolume", out _volume);
         if (muted.isOn) { audioMixer.SetFloat("MasterVolume", -80); }
         else if (!muted.isOn){ audioMixer.SetFloat("MasterVolume", 0); }
     }
